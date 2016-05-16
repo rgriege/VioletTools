@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\src\svg_viewer.c" />
+    <ClCompile Include="..\src\violet\gui\color.c">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\violet\gui\font.c">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\violet\gui\gui.c">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\violet\gui\img.c">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\violet\gui\mesh.c">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\violet\gui\shader.c">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\violet\gui\svg.c">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\violet\gui\texture.c">
+      <Filter>gui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\violet\structures\array.c">
+      <Filter>structures</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\violet\structures\array_map.c">
+      <Filter>structures</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\violet\utility\log.c">
+      <Filter>utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\violet\utility\time.c">
+      <Filter>utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\violet\math\v2.c">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\violet\math\v2i.c">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\violet\math\aabb.c">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\violet\math\ibox.c">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\violet\math\math.c">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\violet\serialization\stream.c">
+      <Filter>serialization</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\violet\math\interval.c">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\violet\math\m3.c">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\violet\math\poly.c">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\violet\math\ival.c">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\violet\math\line.c">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\violet\utility\hash.c">
+      <Filter>utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ezxml\ezxml.c">
+      <Filter>ezxml</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="gui">
+      <UniqueIdentifier>{547611b1-4488-4f94-9323-8a04fc604438}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="math">
+      <UniqueIdentifier>{00a5cdef-d103-4de1-ae50-f06ef485be84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="structures">
+      <UniqueIdentifier>{98fcebb4-4095-4f49-9b02-591a5a270a90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="utility">
+      <UniqueIdentifier>{c7c41aee-4ecd-4e63-992b-83519ff93ad3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="serialization">
+      <UniqueIdentifier>{78c9cacc-efb1-4387-b828-40788617cee6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ezxml">
+      <UniqueIdentifier>{a258f98b-05ec-4181-b6eb-c86283cc3caf}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
