@@ -1,5 +1,8 @@
 #include <stdlib.h>
 
+#include <windows.h>
+#include <shobjidl.h>
+
 #include "violet/gui/gui.h"
 #include "violet/gui/svg.h"
 #include "violet/math/aabb.h"
@@ -11,12 +14,57 @@
 #include "violet/structures/array.h"
 #include "violet/structures/array_map.h"
 
-int main(int argc, const char ** argv)
+static b8 _get_file_to_open(char ** file_name)
+{
+	b8 retval = false;
+
+	if (!SUCCEEDED(CoInitializeEx(NULL, COINIT_APARTMENTTHREADED | COINIT_DISABLE_OLE1DDE)))
+		goto out;
+
+	IFileOpenDialog * dialog;
+	if (!SUCCEEDED(CoCreateInstance(&CLSID_FileOpenDialog, NULL, CLSCTX_ALL, &IID_IFileOpenDialog, &dialog)))
+		goto err_init;
+
+	if (!SUCCEEDED(dialog->lpVtbl->Show(dialog, NULL)))
+		goto err_dlg;
+
+	IShellItem * item;
+	if (!SUCCEEDED(dialog->lpVtbl->GetResult(dialog, &item)))
+		goto err_dlg;
+
+	PWSTR psz_file_path;
+	if (!SUCCEEDED(item->lpVtbl->GetDisplayName(item, SIGDN_FILESYSPATH, &psz_file_path)))
+		goto err_itm;
+
+	CoTaskMemFree(psz_file_path);
+	*file_name = malloc(64);
+	wcstombs(*file_name, psz_file_path, 64);
+	retval = true;
+
+err_itm:
+	item->lpVtbl->Release(item);
+err_dlg:
+	dialog->lpVtbl->Release(dialog);
+err_init:
+	CoUninitialize();
+out:
+	return retval;
+}
+
+int main(int argc, char ** argv)
 {
 	int retval = 1;
 
-    if (argc != 2)
-        goto out;
+	char * file_name;
+	if (argc > 2)
+		goto out;
+	else if (argc == 1)
+	{
+		if (!_get_file_to_open(&file_name))
+			goto out;
+	}
+	else
+		file_name = argv[1];
 
 	FILE * log_file = fopen("log.txt", "w");
 	if (!log_file)
@@ -37,9 +85,9 @@ int main(int argc, const char ** argv)
 	array_map_init(&btn_hooks, sizeof(u32), sizeof(void(*)(void*,const char *)));
 
 	vlt_svg svg;
-	if (!vlt_svg_init_from_file(&svg, argv[1]))
+	if (!vlt_svg_init_from_file(&svg, file_name))
     {
-        log_write("Failed to open svg '%s'", argv[1]);
+        log_write("Failed to open svg '%s'", file_name);
 		goto err_svg;
     }
 
