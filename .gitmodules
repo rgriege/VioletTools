@@ -1,5 +1,5 @@
-[submodule "src/violet"]
-	path = src/violet
+[submodule "src/Violet"]
+	path = src/Violet
 	url = https://github.com/rgriege/Violet.git
 [submodule "src/ezxml"]
 	path = src/ezxml

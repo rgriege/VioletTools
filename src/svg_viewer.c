@@ -36,17 +36,16 @@ int main(int argc, const char ** argv)
 	array_map btn_hooks;
 	array_map_init(&btn_hooks, sizeof(u32), sizeof(void(*)(void*,const char *)));
 
-	vlt_svg * svg = vlt_svg_create(argv[1]);
-	if (!svg)
+	vlt_svg svg;
+	if (!vlt_svg_init_from_file(&svg, argv[1]))
     {
         log_write("Failed to open svg '%s'", argv[1]);
 		goto err_svg;
     }
 
 	vlt_gui * gui = vlt_gui_create();
-	const aabb * dims = vlt_svg_window(svg);
-	if (!vlt_gui_init_window(gui, dims->top_left.x, dims->top_left.y,
-	                         dims->bottom_right.x, dims->bottom_right.y,
+	if (!vlt_gui_init_window(gui, svg.window.top_left.x, svg.window.top_left.y,
+	                         svg.window.bottom_right.x, svg.window.bottom_right.y,
 	                         g_white, "svgViewer"))
 		goto err_gui;
 
@@ -56,7 +55,7 @@ int main(int argc, const char ** argv)
 	while(vlt_gui_begin_frame(gui))
 	{
 		vlt_get_time(&start);
-		vlt_svg_render(gui, svg, NULL, &text_hooks, &btn_hooks);
+		vlt_svg_render(gui, &svg, NULL, &text_hooks, &btn_hooks);
 		vlt_gui_end_frame(gui);
 		vlt_get_time(&end);
 		const u32 frame_milli = vlt_diff_milli(&start, &end);
@@ -70,7 +69,7 @@ int main(int argc, const char ** argv)
 
 err_gui:
 	vlt_gui_destroy(gui);
-	vlt_svg_free(svg);
+	vlt_svg_destroy(&svg);
 err_svg:
 	array_map_destroy(&text_hooks);
 	array_map_destroy(&btn_hooks);
