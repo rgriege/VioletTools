@@ -38,12 +38,6 @@
     <ClCompile Include="..\src\violet\utility\time.c">
       <Filter>utility</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\violet\math\v2.c">
-      <Filter>math</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\violet\math\v2i.c">
-      <Filter>math</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\violet\math\aabb.c">
       <Filter>math</Filter>
     </ClCompile>

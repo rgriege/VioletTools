@@ -5,13 +5,10 @@
 
 #include "violet/gui/gui.h"
 #include "violet/gui/svg.h"
-#include "violet/math/aabb.h"
-#include "violet/math/v2.h"
 #include "violet/utility/hash.h"
 #include "violet/utility/log.h"
 #include "violet/utility/time.h"
 #include "violet/serialization/stream.h"
-#include "violet/structures/array.h"
 #include "violet/structures/array_map.h"
 
 static b8 _get_file_to_open(char ** file_name)

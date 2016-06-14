@@ -167,8 +167,6 @@
     <ClCompile Include="..\src\violet\math\m3.c" />
     <ClCompile Include="..\src\violet\math\math.c" />
     <ClCompile Include="..\src\violet\math\poly.c" />
-    <ClCompile Include="..\src\violet\math\v2.c" />
-    <ClCompile Include="..\src\violet\math\v2i.c" />
     <ClCompile Include="..\src\violet\serialization\stream.c" />
     <ClCompile Include="..\src\violet\structures\array.c" />
     <ClCompile Include="..\src\violet\structures\array_map.c" />
